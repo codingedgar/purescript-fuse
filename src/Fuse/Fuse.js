@@ -10,7 +10,5 @@ export function _newFuse(list, options) {
  * @param {String} pattern 
  */
 export function _search(fuse, pattern) {
-  return function () {
     return fuse.search(pattern);
-  }
 }
