@@ -1,0 +1,27 @@
+{
+  "name": "purescript-fuse",
+  "version": "0.0.1",
+  "description": "bindings for fuse.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codingedgar/purescript-fuse.git"
+  },
+  "author": "codingedgar <codingedgar@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codingedgar/purescript-fuse/issues"
+  },
+  "homepage": "https://github.com/codingedgar/purescript-fuse#readme",
+  "devDependencies": {
+    "purescript": "0.15.6",
+    "purs-tidy": "0.9.2",
+    "spago": "0.20.9"
+  },
+  "peerDependencies": {
+    "fuse.js": "6.6.2"
+  }
+}
