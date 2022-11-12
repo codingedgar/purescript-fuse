@@ -1,6 +1,9 @@
 module Fuse where
 
+import Prelude
+
 import Data.Function.Uncurried (Fn2, runFn2)
+import Effect (Effect)
 import Prim.Row (class Union)
 
 foreign import data Fuse :: forall a. a -> Type
@@ -28,8 +31,14 @@ newFuse :: forall items opts opts_. Union opts opts_ Options => Record opts -> (
 newFuse options list =
   runFn2 _newFuse list options
 
-foreign import _search :: forall items. Fn2 (Fuse items) String (Fuse items)
+foreign import _search :: forall items. Fn2 (Fuse items) String (Array items)
 
-search :: forall items. (Fuse items) -> String -> (Fuse items)
+search :: forall items. (Fuse items) -> String -> Array items
 search fuse pattern =
   runFn2 _search fuse pattern
+
+foreign import _setCollection :: forall items. Fn2 (Fuse items) (Array items) (Effect Unit)
+
+setCollection :: forall items. (Fuse items) -> Array items -> Effect Unit
+setCollection fuse docs =
+  runFn2 _setCollection fuse docs
