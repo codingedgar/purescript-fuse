@@ -31,9 +31,14 @@ newFuse :: forall items opts opts_. Union opts opts_ Options => Record opts -> (
 newFuse options list =
   runFn2 _newFuse list options
 
-foreign import _search :: forall items. Fn2 (Fuse items) String (Array items)
+type SearchResult i =
+  { item :: i
+  , refIndex :: Int
+  }
 
-search :: forall items. (Fuse items) -> String -> Array items
+foreign import _search :: forall i. Fn2 (Fuse i) String (Array (SearchResult i))
+
+search :: forall i. (Fuse i) -> String -> Array (SearchResult i)
 search fuse pattern =
   runFn2 _search fuse pattern
 
